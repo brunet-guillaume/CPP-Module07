@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:20:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/28 15:01:39 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:25:07 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	warning_msg(std::string msg) {
 }
 
 int	main(void) {
-	int	a = 10;
-	int b = 200;
-	int c = 10;
-	int *d = new int(100);
-	int *e = new int(2000);
-	int *f = new int(100);
+	int			a = 10;
+	int			b = 200;
+	int			c = 10;
+	int			*d = new int(100);
+	int			*e = new int(2000);
+	int			*f = new int(100);
 	std::string	s1 = "abcdef";
 	std::string	s2 = "uvwxyz";
 
