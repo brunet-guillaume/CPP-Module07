@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:20:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/29 05:00:45 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/29 09:41:32 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ void	warning_msg(std::string msg) {
 }
 
 int	main(void) {
+	help_msg("main from subject - Start");
+	// MAIN FROM SUBJECT
+	int am = 2;
+	int bm = 3;
+	::swap( am, bm );
+	std::cout << "a = " << am << ", b = " << bm << std::endl;
+	std::cout << "min( a, b ) = " << ::min( am, bm ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( am, bm ) << std::endl;
+	std::string cm = "chaine1";
+	std::string dm = "chaine2";
+	::swap(cm, dm);
+	std::cout << "c = " << cm << ", d = " << dm << std::endl;
+	std::cout << "min( c, d ) = " << ::min( cm, dm ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( cm, dm ) << std::endl;
+	// END MAIN FROM SUBJECT
+	help_msg("main from subject - End");
+
 	int			a = 10;
 	int			b = 200;
 	int			c = 10;
@@ -32,6 +49,7 @@ int	main(void) {
 	std::string	s1 = "abcdef";
 	std::string	s2 = "uvwxyz";
 
+	std::cout << std::endl;
 	warning_msg("Informations :");
 	std::cout << BOLD << "int  a: " << END_STYLE << THIN << a << END_STYLE << std::endl;
 	std::cout << BOLD << "int  b: " << END_STYLE << THIN << b << END_STYLE <<  std::endl;

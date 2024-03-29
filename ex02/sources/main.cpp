@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:20:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/29 08:58:06 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/29 09:34:38 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	rand_int(Array<int> &array) {
 void	print_int(Array<int> &array) {
 	for (unsigned int i = 0; i < array.size(); i++)
 		std::cout << array[i] << " ";
+	std::cout << std::endl;
+}
+
+void	print_str(Array<std::string> &array) {
+	for (unsigned int i = 0; i < array.size(); i++)
+		std::cout << i << ": " << array[i] << std::endl;
 	std::cout << std::endl;
 }
 
@@ -93,7 +99,7 @@ int	main(void) {
 	help_msg("main.cpp from intra - End");
 
 	std::cout << std::endl;
-	help_msg("Creating a Array<int> of size 25, and printing it");
+	help_msg("Creating an Array<int> of size 25, and printing it");
 	Array<int>	int_array(25);
 	print_int(int_array);
 
@@ -103,9 +109,9 @@ int	main(void) {
 	print_int(int_array);
 
 	std::cout << std::endl;
-	help_msg("Copying Array<int> with Array<int>(cpy) and operator = and printing all 3 arrays");
+	help_msg("Copying an Array<int> with Array<int>(cpy) and operator = and printing all 3 arrays");
 	Array<int>	int_copy(int_array);
-	Array<int>	*int_operator = new Array<int>(1);
+	Array<int>	*int_operator = new Array<int>(10);
 	*int_operator = int_copy;
 	print_int(int_array);
 	print_int(int_copy);
@@ -131,7 +137,45 @@ int	main(void) {
 	print_int(int_array);
 	print_int(int_copy);
 	print_int(*int_operator);
-
+	
 	delete int_operator;
+
+	std::cout << std::endl;
+	help_msg("Creating an Array<std::string> of size 10, and printing it");
+	Array<std::string>	str_array(10);
+	print_str(str_array);
+
+	std::cout << std::endl;
+	help_msg("Assigning values to Array<std::string> and printing it");
+	str_array[0] = "a string";
+	str_array[3] = "an other string";
+	str_array[8] = "and an other one";
+	print_str(str_array);
+
+	std::cout << std::endl;
+	help_msg("Copying an Array<std::string> with Array<std::string>(cpy) and operator = and printing all 3 arrays");
+	Array<std::string>	str_copy(str_array);
+	Array<std::string>	*str_operator = new Array<std::string>(10);
+	*str_operator = str_copy;
+	print_str(str_array);
+	print_str(str_copy);
+	print_str(*str_operator);
+
+	std::cout << std::endl;
+	help_msg("Trying to assigning values (0 to 11: 2 out of bounds) to the first array and printing all 3 arrays");
+	for (unsigned int i = 0; i < 12; i++)
+	{
+		try {
+			str_array[i] = "qwertyuiop";
+		} catch (std::exception &e) {
+			std::cerr << RED << e.what() << END_STYLE << std::endl;
+		}
+	}
+	print_str(str_array);
+	print_str(str_copy);
+	print_str(*str_operator);
+
+	delete str_operator;
+
 	return (0);
 }
