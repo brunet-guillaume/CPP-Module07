@@ -21,7 +21,7 @@ Array<T>::Array(): _size(0), _array(NULL) {}
 template<typename T>
 Array<T>::Array(unsigned int n): _size(n), _array(NULL) {
 	try {
-		this->_array = new T[this->_size];
+		this->_array = new T[this->_size]();
 	} catch (const std::bad_alloc &e) {
 		std::cerr << "Allocation failed: " << e.what() << std::endl;
 		this->_array = NULL;
@@ -30,16 +30,20 @@ Array<T>::Array(unsigned int n): _size(n), _array(NULL) {
 }
 
 template<typename T>
-Array<T>::Array(const Array<T> &src) {
+Array<T>::Array(const Array<T> &src): _size(0), _array(NULL) {
 	*this = src;
 }
 
 template<typename T>
-Array<T>::~Array() {}
+Array<T>::~Array() {
+	delete [] this->_array;
+}
 
 template<typename T>
 Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 	this->_size = rhs.size();
+	if (this->_array)
+		delete [] this->_array;
 	try {
 		this->_array = new T[this->_size];
 		for (unsigned int i = 0; i < this->_size; i++)
